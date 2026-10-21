@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "uk-carbon-price-floor"
+version = "1.0.0"
+description = "Synthetic control estimate of the UK Carbon Price Floor's effect on coal power."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Emmanuel" }]
+license = "MIT"
+dependencies = ["duckdb>=1.1", "matplotlib>=3.8", "numpy>=1.24", "pandas>=2.0", "scipy>=1.10"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cpf"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]
